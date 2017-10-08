@@ -121,6 +121,7 @@ class FastCaches
             if (m_inventory.GetItemAt(i).m_Name == m_lastChangedCache)
             {
                 m_inventory.UseItem(i);
+                break;
             }
         }
     }
