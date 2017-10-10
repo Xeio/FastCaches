@@ -77,7 +77,7 @@ class FastCaches
         if (m_lootboxWindowValue.GetValue())
         {
             m_isLootbox = false;
-            setTimeout(Delegate.create(this, WireLootboxUIEvents), 100);
+            WireLootboxUIEvents();
         }
         else
         {
@@ -91,6 +91,15 @@ class FastCaches
     
     private function WireLootboxUIEvents()
     {
+        if (!_root.lootbox.m_Window.m_Content)
+        {
+            if (m_lootboxWindowValue.GetValue())
+            {
+                //UI hasn't shown yet, lets give it another moment...
+                setTimeout(Delegate.create(this, WireLootboxUIEvents), 50);
+            }
+            return;
+        }
         m_baseOpenChest = Delegate.create(_root.lootbox.m_Window.m_Content, _root.lootbox.m_Window.m_Content.OpenChest);
         _root.lootbox.m_Window.m_Content.OpenChest = Delegate.create(this, FastOpenChest);
         _root.lootbox.m_Window.m_Content.m_Hovered = false;
