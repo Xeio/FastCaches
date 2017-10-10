@@ -110,8 +110,8 @@ class FastCaches
     {
         m_baseOpenChest();
         m_isLootbox = _root.lootbox.m_Window.m_Content.m_TokenType == _global.Enums.Token.e_Lockbox_Key;
+        _root.lootbox.m_Window.m_Content.m_Chest.stop();
         _root.lootbox.m_Window.m_Content.m_Chest.gotoAndStop(_root.lootbox.m_Window.m_Content.m_Chest._totalframes);
-        _root.lootbox.m_Window.m_Content.CheckChestFrame();
     }
     
     function FindLootBoxToOpen()
